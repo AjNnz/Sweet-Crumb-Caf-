@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/* ------------------------------------------------------------------ */
+/* Accounts                                                            */
+/* ------------------------------------------------------------------ */
+
+// One table for EVERY role (ADMIN | STAFF | RIDER | CUSTOMER). The mock kept
+// two arrays (users + customers) but they differed only by role — one table
+// with a role column is the standard pattern. Passwords are stored as
+// bcrypt hashes from day one; the plaintext mock field disappears.
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String // ADMIN | STAFF | RIDER | CUSTOMER — validated in the API layer (SQLite has no enums)
+  status       String   @default("ACTIVE") // ACTIVE | INACTIVE
+  contact      String?
+  createdAt    DateTime @default(now())
+
+  placedOrders    Order[] @relation("OrderCustomer")
+  deliveredOrders Order[] @relation("OrderRider")
+}
+
+/* ------------------------------------------------------------------ */
+/* Catalog                                                             */
+/* ------------------------------------------------------------------ */
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  category    String // Cupcakes | Cakes | Pastries | Coffee | Other Drinks — validated in the API layer
+  price       Float
+  description String
+  emoji       String   @default("🍰") // fallback visual when no photo exists
+  imageUrl    String? // optional real photo (path under /public) — null means "show the emoji"
+  available   Boolean  @default(true)
+  archived    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  inventory  InventoryItem?
+  orderItems OrderItem[]
+}
+
+/* ------------------------------------------------------------------ */
+/* Stock                                                               */
+/* ------------------------------------------------------------------ */
+
+// One row per batch-baked product. Drinks are made to order — they simply
+// have no InventoryItem row (same rule as the mock).
+model InventoryItem {
+  id                String   @id @default(cuid())
+  productId         String   @unique
+  product           Product  @relation(fields: [productId], references: [id])
+  quantity          Int
+  lowStockThreshold Int      @default(5)
+  lastUpdated       DateTime @updatedAt
+
+  movements StockMovement[]
+}
+
+// The mock embedded movements as an array inside the inventory item.
+// Relational databases don't nest — a list of things is always its own table.
+model StockMovement {
+  id              String        @id @default(cuid())
+  inventoryItemId String
+  inventoryItem   InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  date            DateTime      @default(now())
+  type            String // ADD | SOLD | WASTED | ADJUSTMENT
+  quantity        Int // always positive; direction comes from `type`
+  note            String?
+}
+
+/* ------------------------------------------------------------------ */
+/* Orders                                                              */
+/* ------------------------------------------------------------------ */
+
+model Order {
+  id        String @id @default(cuid())
+  reference String @unique // human-friendly: ORD-000123
+  channel   String // WALK-IN | ONLINE
+
+  // Guest checkout is allowed, so customerId is optional. Registered
+  // customers link to their User row; guests just carry name/contact text.
+  customerId      String?
+  customer        User?   @relation("OrderCustomer", fields: [customerId], references: [id])
+  customerName    String
+  customerContact String?
+
+  // Fulfillment — the mock's nested `fulfillment { mode, address, notes }`
+  // object is flattened into columns (relational tables don't nest objects).
+  fulfillmentMode String // PICKUP | DELIVERY
+  deliveryAddress String?
+  deliveryNotes   String?
+  deliveryFee     Float   @default(0)
+  // Delivery-leg tracking — only meaningful when fulfillmentMode is DELIVERY.
+  deliveryStatus  String? // QUEUED | CLAIMED | OUT_FOR_DELIVERY | DELIVERED
+  riderId         String?
+  rider           User?   @relation("OrderRider", fields: [riderId], references: [id])
+  deliveredAt     DateTime?
+
+  subtotal       Float
+  total          Float
+  amountReceived Float? // POS cash drawer fields
+  change         Float?
+
+  paymentMethod String // CASH | GCASH | CARD | CASH ON PICKUP | CASH ON DELIVERY
+  paymentStatus String @default("PENDING") // PENDING | PAID | UNPAID | REFUNDED
+  orderStatus   String @default("PENDING") // PENDING | CONFIRMED | PREPARING | READY | COMPLETED | CANCELLED
+  stockAffected Boolean @default(false)
+  createdAt     DateTime @default(now())
+  completedAt   DateTime?
+  cancelledAt   DateTime?
+
+  items OrderItem[]
+}
+
+// Line items copy the product's name and price AT PURCHASE TIME. If the
+// café raises prices next month, old receipts must stay historically correct —
+// that's why we snapshot instead of only storing a productId.
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  name      String
+  price     Float
+  quantity  Int
+}
+
+/* ------------------------------------------------------------------ */
+/* Settings — a single row, always.                                    */
+/* ------------------------------------------------------------------ */
+
+model CafeSettings {
+  id           String @id @default("singleton")
+  cafeName     String
+  address      String
+  phone        String
+  email        String
+  openingHours String
+  currency     String @default("PHP")
+}

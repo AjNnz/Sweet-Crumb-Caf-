@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cafe palette */
+  --color-primary: #5c4033;
+  --color-primary-dark: #463125;
+  --color-secondary: #a47551;
+  --color-accent: #d6a77a;
+  --color-accent-light: #eecfae;
+  --color-cream: #faf7f2;
+  --color-espresso: #29231f;
+  --color-mocha: #6f5b4c;
+  --color-latte: #f0e6d8;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+
+  --shadow-card: 0 1px 3px rgb(41 35 31 / 0.06), 0 4px 14px rgb(41 35 31 / 0.06);
+  --shadow-lift: 0 4px 10px rgb(41 35 31 / 0.1), 0 10px 30px rgb(41 35 31 / 0.1);
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-espresso);
+}
+
+/* Thin, warm scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) transparent;
+}
