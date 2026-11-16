@@ -335,8 +335,9 @@ interface StoreContextValue extends StoreState {
   releaseDeliveryOrder: (orderId: string) => Promise<{ ok: boolean; error?: string }>;
   deliveryStatusOf: (order: Order) => DeliveryStatus;
 
-  // Products
-  saveProduct: (product: Partial<Product> & { id?: string }) => void;
+  // Products — imageUrl may be null: sending null PATCHes the photo away
+  // (matches the API contract; Product.imageUrl itself is optional string).
+  saveProduct: (product: Partial<Omit<Product, "imageUrl">> & { id?: string; imageUrl?: string | null }) => void;
   archiveProduct: (productId: string) => void;
   deleteProduct: (productId: string) => Promise<{ ok: boolean; error?: string }>;
 
