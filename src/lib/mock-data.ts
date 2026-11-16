@@ -109,30 +109,70 @@ export const SEED_SETTINGS: CafeSettings = {
 
 export const SEED_PRODUCTS: Product[] = [
   // Cupcakes
-  { id: "prd-001", name: "Classic Chocolate Cupcake", category: "Cupcakes", price: 65, description: "Rich chocolate cupcake with fudge frosting.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-002", name: "Red Velvet Cupcake", category: "Cupcakes", price: 75, description: "Velvety red sponge with cream cheese frosting.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-003", name: "Salted Caramel Cupcake", category: "Cupcakes", price: 80, description: "Caramel drizzled cupcake with sea salt flakes.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-004", name: "Vanilla Bean Cupcake", category: "Cupcakes", price: 60, description: "Light vanilla sponge with buttercream swirl.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-001", name: "Classic Chocolate Cupcake", category: "Cupcakes", price: 45, description: "Rich chocolate cupcake with fudge frosting.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-002", name: "Red Velvet Cupcake", category: "Cupcakes", price: 50, description: "Velvety red sponge with cream cheese frosting.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-003", name: "Salted Caramel Cupcake", category: "Cupcakes", price: 50, description: "Caramel drizzled cupcake with sea salt flakes.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-004", name: "Vanilla Bean Cupcake", category: "Cupcakes", price: 45, description: "Light vanilla sponge with buttercream swirl.", emoji: "🧁", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
   // Cakes
-  { id: "prd-005", name: "Chocolate Dream Cake (Slice)", category: "Cakes", price: 140, description: "Moist chocolate layer cake with ganache.", emoji: "🍰", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-006", name: "Blueberry Cheesecake (Slice)", category: "Cakes", price: 165, description: "Creamy baked cheesecake with blueberry compote.", emoji: "🍰", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-007", name: "Whole Carrot Cake", category: "Cakes", price: 720, description: "Walnut carrot cake with cream cheese frosting. Good for sharing.", emoji: "🎂", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-008", name: "Mocha Torte (Slice)", category: "Cakes", price: 150, description: "Coffee-infused layers with mocha buttercream.", emoji: "🍰", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-005", name: "Chocolate Dream Cake (Slice)", category: "Cakes", price: 90, description: "Moist chocolate layer cake with ganache.", emoji: "🍰", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-006", name: "Blueberry Cheesecake (Slice)", category: "Cakes", price: 100, description: "Creamy baked cheesecake with blueberry compote.", emoji: "🍰", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-007", name: "Whole Carrot Cake", category: "Cakes", price: 350, description: "Walnut carrot cake with cream cheese frosting. Good for sharing.", emoji: "🎂", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-008", name: "Mocha Torte (Slice)", category: "Cakes", price: 85, description: "Coffee-infused layers with mocha buttercream.", emoji: "🍰", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
   // Pastries
-  { id: "prd-009", name: "Butter Croissant", category: "Pastries", price: 85, description: "Flaky, buttery, baked fresh each morning.", emoji: "🥐", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-010", name: "Cinnamon Roll", category: "Pastries", price: 95, description: "Soft roll with cinnamon sugar and glaze.", emoji: "🥮", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-011", name: "Ube Ensaymada", category: "Pastries", price: 70, description: "Filipino favorite with ube halaya and cheese.", emoji: "🥠", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-012", name: "Chocolate Chip Cookie", category: "Pastries", price: 55, description: "Chewy cookie loaded with cocoa chunks.", emoji: "🍪", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-009", name: "Butter Croissant", category: "Pastries", price: 40, description: "Flaky, buttery, baked fresh each morning.", emoji: "🥐", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-010", name: "Cinnamon Roll", category: "Pastries", price: 40, description: "Soft roll with cinnamon sugar and glaze.", emoji: "🥮", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-011", name: "Ube Ensaymada", category: "Pastries", price: 35, description: "Filipino favorite with ube halaya and cheese.", emoji: "🥠", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-012", name: "Chocolate Chip Cookie", category: "Pastries", price: 25, description: "Chewy cookie loaded with cocoa chunks.", emoji: "🍪", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
   // Coffee
-  { id: "prd-013", name: "Hot Americano", category: "Coffee", price: 90, description: "Smooth double shot of house espresso.", emoji: "☕", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-014", name: "Café Latte", category: "Coffee", price: 120, description: "Steamed milk over espresso with latte art.", emoji: "☕", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-015", name: "Salted Caramel Macchiato", category: "Coffee", price: 135, description: "Espresso, milk, caramel and a pinch of salt.", emoji: "☕", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-016", name: "Cold Brew", category: "Coffee", price: 110, description: "Slow-steeped 18-hour cold brew over ice.", emoji: "🧋", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-013", name: "Hot Americano", category: "Coffee", price: 60, description: "Smooth double shot of house espresso.", emoji: "☕", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-014", name: "Café Latte", category: "Coffee", price: 85, description: "Steamed milk over espresso with latte art.", emoji: "☕", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-015", name: "Salted Caramel Macchiato", category: "Coffee", price: 95, description: "Espresso, milk, caramel and a pinch of salt.", emoji: "☕", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-016", name: "Cold Brew", category: "Coffee", price: 80, description: "Slow-steeped 18-hour cold brew over ice.", emoji: "🧋", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
   // Other Drinks
-  { id: "prd-017", name: "Iced Matcha Latte", category: "Other Drinks", price: 130, description: "Ceremonial matcha with milk and ice.", emoji: "🍵", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-018", name: "Strawberry Frappe", category: "Other Drinks", price: 125, description: "Blended strawberry with whipped cream.", emoji: "🥤", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-019", name: "Hot Chocolate", category: "Other Drinks", price: 105, description: "Belgian cocoa with steamed milk.", emoji: "🍫", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
-  { id: "prd-020", name: "Calamansi Cooler", category: "Other Drinks", price: 85, description: "Refreshing citrus cooler with mint.", emoji: "🍹", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-017", name: "Iced Matcha Latte", category: "Other Drinks", price: 90, description: "Ceremonial matcha with milk and ice.", emoji: "🍵", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-018", name: "Strawberry Frappe", category: "Other Drinks", price: 85, description: "Blended strawberry with whipped cream.", emoji: "🥤", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-019", name: "Hot Chocolate", category: "Other Drinks", price: 70, description: "Belgian cocoa with steamed milk.", emoji: "🍫", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  { id: "prd-020", name: "Calamansi Cooler", category: "Other Drinks", price: 60, description: "Refreshing citrus cooler with mint.", emoji: "🍹", available: true, createdAt: "2026-08-01T09:00:00.000Z" },
+  // Cupcakes — expansion wave (Oct 2026 menu refresh)
+  { id: "prd-021", name: "Double Chocolate Fudge Cupcake", category: "Cupcakes", price: 50, description: "Extra-dark cocoa cupcake with a molten fudge core.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-022", name: "Cookies & Cream Cupcake", category: "Cupcakes", price: 45, description: "Crushed chocolate cookies folded into whipped frosting.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-023", name: "Carrot Walnut Cupcake", category: "Cupcakes", price: 40, description: "Spiced carrot sponge with a cream cheese swirl.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-024", name: "Matcha Cupcake", category: "Cupcakes", price: 50, description: "Earthy green-tea sponge with white chocolate icing.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-025", name: "Banana Pudding Cupcake", category: "Cupcakes", price: 35, description: "Moist banana cupcake with a vanilla pudding center.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-026", name: "Buko Pandan Cupcake", category: "Cupcakes", price: 40, description: "Pandan sponge with sweet coconut jam frosting.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-027", name: "Coffee Mocha Cupcake", category: "Cupcakes", price: 45, description: "Espresso-kissed chocolate with mocha buttercream.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-028", name: "Strawberry Lemonade Cupcake", category: "Cupcakes", price: 50, description: "Zesty lemon sponge topped with strawberry buttercream.", emoji: "🧁", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  // Cakes — expansion wave
+  { id: "prd-029", name: "Ube Macapuno Cake (Slice)", category: "Cakes", price: 80, description: "Purple yam layers ribbed with macapuno strings.", emoji: "🍰", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-030", name: "Mango Graham Cake (Slice)", category: "Cakes", price: 75, description: "Layered grahams, cream and fresh mango cubes.", emoji: "🍰", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-031", name: "Red Velvet Whole Cake", category: "Cakes", price: 380, description: "Full-size red velvet with cream cheese frosting. Good for sharing.", emoji: "🎂", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-032", name: "Tiramisu (Slice)", category: "Cakes", price: 100, description: "Espresso-soaked ladyfingers under mascarpone cream.", emoji: "🍰", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-033", name: "Pandan Chiffon Cake (Slice)", category: "Cakes", price: 65, description: "Airy pandan chiffon finished with coconut glaze.", emoji: "🍰", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  // Pastries — expansion wave
+  { id: "prd-034", name: "Classic Pandesal", category: "Pastries", price: 20, description: "Soft morning bread rolls — best while warm.", emoji: "🥐", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-035", name: "Cheese Pandesal", category: "Pastries", price: 30, description: "Pandesal filled with melty cheese.", emoji: "🥐", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-036", name: "Spanish Bread", category: "Pastries", price: 30, description: "Pillowy roll with sweet cheese filling.", emoji: "🥠", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-037", name: "Kabayan Roll", category: "Pastries", price: 28, description: "Cheese-stuffed soft roll with a sugared top.", emoji: "🥠", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-038", name: "Pan de Coco", category: "Pastries", price: 25, description: "Soft roll stuffed with sweet coconut filling.", emoji: "🥠", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-039", name: "Apple Pie (Slice)", category: "Pastries", price: 40, description: "Flaky double crust over spiced apple filling.", emoji: "🍎", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-040", name: "Banana Bread (Slice)", category: "Pastries", price: 35, description: "Walnut-studded banana loaf, served toasted.", emoji: "🍞", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-041", name: "Fudge Brownie", category: "Pastries", price: 35, description: "Dense dark-chocolate brownie with a crackly top.", emoji: "🍫", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-042", name: "Butterscotch Bar", category: "Pastries", price: 30, description: "Chewy butterscotch bars loaded with cashews.", emoji: "🍪", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-043", name: "Cream Puff", category: "Pastries", price: 30, description: "Crisp choux pastry filled with vanilla custard.", emoji: "🍩", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  // Coffee — expansion wave
+  { id: "prd-044", name: "Cappuccino", category: "Coffee", price: 75, description: "Equal parts espresso, steamed milk and foam.", emoji: "☕", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-045", name: "Mocha Latte", category: "Coffee", price: 90, description: "Espresso meets chocolate and steamed milk.", emoji: "☕", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-046", name: "Caramel Cold Brew Float", category: "Coffee", price: 100, description: "Cold brew over vanilla ice cream with caramel drizzle.", emoji: "🧋", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-047", name: "Flat White", category: "Coffee", price: 85, description: "Velvet micro-foam over a ristretto double shot.", emoji: "☕", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-048", name: "Vietnamese Iced Coffee", category: "Coffee", price: 90, description: "Strong drip coffee over condensed milk and ice.", emoji: "🧋", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  // Other Drinks — expansion wave
+  { id: "prd-049", name: "Mango Smoothie", category: "Other Drinks", price: 95, description: "Fresh ripe mango blended with creamy yogurt.", emoji: "🥤", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-050", name: "Watermelon Slush", category: "Other Drinks", price: 70, description: "Chilled watermelon blitzed with ice.", emoji: "🍉", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-051", name: "Lychee Sparkling Fizz", category: "Other Drinks", price: 80, description: "Lychee juice poured over sparkling water.", emoji: "🍹", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-052", name: "Matcha Frappe", category: "Other Drinks", price: 95, description: "Blended matcha with milk, ice and cream top.", emoji: "🥤", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-053", name: "Cucumber Lemon Cooler", category: "Other Drinks", price: 65, description: "Cucumber, lemon and mint over cracked ice.", emoji: "🍹", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-054", name: "Salted Toffee Frappe", category: "Other Drinks", price: 100, description: "Blended coffee with a salted toffee drizzle.", emoji: "🥤", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
+  { id: "prd-055", name: "Pandan Lemongrass Tea", category: "Other Drinks", price: 55, description: "Soothing house blend of pandan and lemongrass.", emoji: "🍵", available: true, createdAt: "2026-10-01T09:00:00.000Z" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -153,6 +193,30 @@ const BASE_STOCK: Record<string, { qty: number; lowStockThreshold: number }> = {
   "prd-010": { qty: 22, lowStockThreshold: 8 },
   "prd-011": { qty: 26, lowStockThreshold: 10 },
   "prd-012": { qty: 40, lowStockThreshold: 12 },
+  // October menu refresh — new baked goods
+  "prd-021": { qty: 20, lowStockThreshold: 8 },
+  "prd-022": { qty: 18, lowStockThreshold: 6 },
+  "prd-023": { qty: 16, lowStockThreshold: 6 },
+  "prd-024": { qty: 12, lowStockThreshold: 5 },
+  "prd-025": { qty: 18, lowStockThreshold: 8 },
+  "prd-026": { qty: 15, lowStockThreshold: 6 },
+  "prd-027": { qty: 14, lowStockThreshold: 5 },
+  "prd-028": { qty: 12, lowStockThreshold: 5 },
+  "prd-029": { qty: 9, lowStockThreshold: 3 },
+  "prd-030": { qty: 10, lowStockThreshold: 4 },
+  "prd-031": { qty: 2, lowStockThreshold: 1 }, // whole cakes — tiny batch
+  "prd-032": { qty: 8, lowStockThreshold: 3 },
+  "prd-033": { qty: 7, lowStockThreshold: 3 },
+  "prd-034": { qty: 60, lowStockThreshold: 20 }, // pandesal sells fast
+  "prd-035": { qty: 40, lowStockThreshold: 15 },
+  "prd-036": { qty: 25, lowStockThreshold: 10 },
+  "prd-037": { qty: 22, lowStockThreshold: 8 },
+  "prd-038": { qty: 28, lowStockThreshold: 10 },
+  "prd-039": { qty: 8, lowStockThreshold: 3 },
+  "prd-040": { qty: 10, lowStockThreshold: 4 },
+  "prd-041": { qty: 20, lowStockThreshold: 8 },
+  "prd-042": { qty: 18, lowStockThreshold: 7 },
+  "prd-043": { qty: 15, lowStockThreshold: 6 },
 };
 
 export function buildSeedInventory(): InventoryItem[] {
@@ -218,6 +282,42 @@ const DEMAND_ENGINE: Record<string, EngineConfig> = {
   "prd-018": { base: 2, trend: 0.8 },
   "prd-019": { base: 4, trend: 1.15 },
   "prd-020": { base: 1.5, trend: 0.6 },
+  // October menu refresh — new items (a couple of slow movers for realism)
+  "prd-021": { base: 4, trend: 1.2 },
+  "prd-022": { base: 3, trend: 1.0 },
+  "prd-023": { base: 2, trend: 0.85 },
+  "prd-024": { base: 2, trend: 1.1 },
+  "prd-025": { base: 3, trend: 0.95 },
+  "prd-026": { base: 2, trend: 0.8 },
+  "prd-027": { base: 3, trend: 1.15 },
+  "prd-028": { base: 2, trend: 1.0 },
+  "prd-029": { base: 2, trend: 1.3 },
+  "prd-030": { base: 2.5, trend: 1.2 },
+  "prd-031": { base: 0.3, trend: 1.0 },
+  "prd-032": { base: 1.5, trend: 0.9 },
+  "prd-033": { base: 1, trend: 0.8 },
+  "prd-034": { base: 12, trend: 1.2 },
+  "prd-035": { base: 8, trend: 1.15 },
+  "prd-036": { base: 4, trend: 0.9 },
+  "prd-037": { base: 3, trend: 0.85 },
+  "prd-038": { base: 5, trend: 1.05 },
+  "prd-039": { base: 1, trend: 0.9 },
+  "prd-040": { base: 2, trend: 1.0 },
+  "prd-041": { base: 4, trend: 1.2 },
+  "prd-042": { base: 2.5, trend: 0.95 },
+  "prd-043": { base: 3, trend: 1.05 },
+  "prd-044": { base: 6, trend: 1.2 },
+  "prd-045": { base: 5, trend: 1.3 },
+  "prd-046": { base: 2, trend: 1.1 },
+  "prd-047": { base: 3, trend: 0.9 },
+  "prd-048": { base: 2, trend: 1.05 },
+  "prd-049": { base: 3, trend: 1.2 },
+  "prd-050": { base: 2, trend: 0.9 },
+  "prd-051": { base: 1.5, trend: 0.8 },
+  "prd-052": { base: 2.5, trend: 1.15 },
+  "prd-053": { base: 1.5, trend: 0.7 },
+  "prd-054": { base: 2, trend: 1.0 },
+  "prd-055": { base: 1, trend: 0.75 },
 };
 
 /* ------------------------------------------------------------------ */
@@ -254,8 +354,7 @@ function buildEndOfShiftMovements(productId: string, dailyDemand: number): Inven
     when.setDate(when.getDate() - day);
     when.setHours(21, 0, 0, 0); // recorded after closing
     // Whole cakes write off one at a time; small items 1–3 pieces on slow days
-    const quantity =
-      productId === "prd-007" ? 1 : 1 + Math.floor(rand() * (dailyDemand < 1.5 ? 3 : 2));
+    const quantity = productId === "prd-007" || productId === "prd-031" ? 1 : 1 + Math.floor(rand() * (dailyDemand < 1.5 ? 3 : 2));
     movements.push({
       id: `mov-${productId}-eos-${day}`,
       date: when.toISOString(),
