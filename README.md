@@ -33,6 +33,8 @@ The SQLite database lives at `prisma/dev.db` (configured by `.env` → `DATABASE
 
 ## Architecture
 
+**See [`ARCHITECTURE.md`](ARCHITECTURE.md) for the full backend-vs-frontend folder map, request-flow walkthrough, and "where do I change X?" quick reference.**
+
 ```
 src/
   lib/                 — pure logic, no React
