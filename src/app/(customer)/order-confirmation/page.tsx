@@ -1,1 +1,1 @@
-export { default } from "@/components/features/customer/order-confirmation-screen"
+export { default } from "@/components/features/customer/order-confirmation"

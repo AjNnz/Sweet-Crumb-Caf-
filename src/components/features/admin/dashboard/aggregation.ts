@@ -36,7 +36,6 @@ export function buildDashboardStats(
   inventory: InventoryItem[],
   range: number,
 ): DashboardStats {
-  // eslint-disable-next-line react-hooks/purity -- dashboard windows are relative to "now" by design
   const cutoff = Date.now() - range * 24 * 3600 * 1000;
   const sales = completedSales(orders).filter((o) => new Date(o.createdAt).getTime() >= cutoff);
   const revenue = sales.reduce((s, o) => s + o.total, 0);

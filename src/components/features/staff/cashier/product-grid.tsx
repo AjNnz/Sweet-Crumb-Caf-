@@ -78,9 +78,13 @@ function ProductTile({ product, qty, onAdd }: { product: Product; qty: number; o
       <p className="line-clamp-2 min-h-10 text-xs font-semibold text-espresso">{product.name}</p>
       <div className="mt-1 flex items-center justify-between">
         <span className="text-sm font-bold text-primary">{formatCurrency(product.price)}</span>
-        <span className={cn("text-[10px] font-semibold", !madeToOrder && stock <= 5 ? "text-red-600" : "text-mocha")}>
-          {out ? "Sold out" : madeToOrder ? "Made to order" : `${stock} left`}
-        </span>
+        {/* Drinks are made to order — no stock note needed (sold-out badges
+         * only apply to counter-baked goods). */}
+        {out ? (
+          <span className="text-[10px] font-semibold text-red-600">Sold out</span>
+        ) : madeToOrder ? null : (
+          <span className={cn("text-[10px] font-semibold", stock <= 5 ? "text-red-600" : "text-mocha")}>{stock} left</span>
+        )}
       </div>
       {qty > 0 ? (
         <span className="absolute right-2 top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-secondary px-1 text-xs font-bold text-white">

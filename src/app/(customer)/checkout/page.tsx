@@ -1,1 +1,1 @@
-export { default } from "@/components/features/customer/checkout-screen"
+export { default } from "@/components/features/customer/checkout"

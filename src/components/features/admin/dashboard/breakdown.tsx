@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { DonutChart, HorizontalBars } from "@/components/common/charts";
 import { formatCurrency } from "@/lib/utils";
 import type { DashboardStats } from "./aggregation";

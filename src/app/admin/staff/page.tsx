@@ -1,1 +1,1 @@
-export { default } from "@/components/features/admin/staff-screen"
+export { default } from "@/components/features/admin/staff"

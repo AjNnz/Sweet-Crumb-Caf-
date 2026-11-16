@@ -1,1 +1,1 @@
-export { default } from "@/components/features/customer/menu-screen"
+export { default } from "@/components/features/customer/menu"

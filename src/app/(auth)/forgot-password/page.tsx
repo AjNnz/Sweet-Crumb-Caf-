@@ -1,1 +1,1 @@
-export { default } from "@/components/features/auth/forgot-password-screen";
+export { default } from "@/components/features/auth/forgot-password";

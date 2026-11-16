@@ -1,1 +1,1 @@
-export { default } from "@/components/features/admin/settings-screen"
+export { default } from "@/components/features/admin/settings"

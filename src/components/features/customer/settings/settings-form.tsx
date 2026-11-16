@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 
 import { useStore } from "@/context/store";
@@ -9,38 +8,36 @@ import { isValidEmail } from "@/lib/utils";
 import { Button } from "@/components/common/ui/button";
 import { Field, Input } from "@/components/common/ui/input";
 import { useToast } from "@/components/common/toast";
+import { useState } from "react";
 
-export default function SettingsPage() {
-  const { currentUser, isHydrated } = useStore();
-
-  // Wait for the persisted session to hydrate before judging auth state
-  if (!isHydrated) return null;
-
-  // Signed-in customers only (same client-side guard as my-orders)
-  if (!currentUser || currentUser.role !== "CUSTOMER") {
-    return (
-      <main className="mx-auto max-w-2xl px-4 py-24 text-center">
-        <p className="text-5xl">⚙️</p>
-        <h1 className="mt-4 font-display text-2xl font-bold text-espresso">Account settings</h1>
-        <p className="mt-2 text-sm text-mocha">Sign in to manage your profile.</p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Link href="/login?next=/settings" className="inline-block">
-            <Button size="lg">Sign In</Button>
-          </Link>
-          <Link href="/menu" className="inline-block">
-            <Button variant="outline" size="lg">
-              Browse Menu
-            </Button>
-          </Link>
-        </div>
-      </main>
-    );
-  }
-
-  return <SettingsForm key={currentUser.id} user={currentUser} />;
+/* Signed-out / wrong-role state — the client-side guard. */
+export function SignInSection() {
+  return (
+    <main className="mx-auto max-w-2xl px-4 py-24 text-center">
+      <p className="text-5xl">⚙️</p>
+      <h1 className="mt-4 font-display text-2xl font-bold text-espresso">Account settings</h1>
+      <p className="mt-2 text-sm text-mocha">Sign in to manage your profile.</p>
+      <div className="mt-6 flex justify-center gap-3">
+        <Link href="/login?next=/settings" className="inline-block">
+          <Button size="lg">Sign In</Button>
+        </Link>
+        <Link href="/menu" className="inline-block">
+          <Button variant="outline" size="lg">
+            Browse Menu
+          </Button>
+        </Link>
+      </div>
+    </main>
+  );
 }
 
-function SettingsForm({ user }: { user: User }) {
+/* ------------------------------------------------------------------ */
+/* The settings form — profile fields plus the optional password       */
+/* change. Seeded on mount; the page keys it by user id so switching   */
+/* accounts always starts fresh.                                       */
+/* ------------------------------------------------------------------ */
+
+export function SettingsForm({ user }: { user: User }) {
   const { updateOwnProfile } = useStore();
   const { toast } = useToast();
 

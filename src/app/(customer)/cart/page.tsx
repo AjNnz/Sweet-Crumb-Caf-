@@ -1,1 +1,1 @@
-export { default } from "@/components/features/customer/cart-screen"
+export { default } from "@/components/features/customer/cart"

@@ -1,5 +1,6 @@
 import type { PaymentMethod } from "@/lib/types";
 import { DELIVERY_FEE } from "@/lib/types";
+import { isValidEmail } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
 /* Pure checkout math — the payment choices and the price resolution.  */

@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Badge } from "@/components/common/ui/badge";
 import { buttonClass } from "@/components/common/ui/button";
+import { ProductThumb } from "@/components/features/customer/product-card";
 import { ORDER_STATUS_STYLES, cn, displayCustomerName, formatCurrency, formatDateTime } from "@/lib/utils";
 import type { Product } from "@/lib/types";
 import type { InventoryItem } from "@/lib/types";
@@ -67,7 +68,13 @@ export function LowStockSection({
             const critical = inv.quantity <= inv.lowStockThreshold * 0.5;
             return (
               <div key={inv.productId} className="flex items-center gap-3 rounded-xl bg-cream px-3 py-2">
-                <span className="text-lg">{p?.emoji}</span>
+                {/* Product photo (or emoji fallback) — ProductThumb needs a
+                 * product, and the inventory row may point at a deleted one. */}
+                {p ? (
+                  <ProductThumb product={p} className="h-9 w-9 shrink-0 rounded-lg text-lg" />
+                ) : (
+                  <span className="text-lg">❔</span>
+                )}
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-xs font-semibold text-espresso">{p?.name}</p>
                   <p className="text-[10px] text-mocha">

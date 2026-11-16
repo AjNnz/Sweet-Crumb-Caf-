@@ -1,1 +1,1 @@
-export { default } from "@/components/features/customer/landing-screen"
+export { default } from "@/components/features/customer/landing"

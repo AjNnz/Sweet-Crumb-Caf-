@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { useStore } from "@/context/store";
 import type { Product } from "@/lib/types";
@@ -23,15 +24,31 @@ export function ProductThumb({ product, className }: { product: Product; classNa
     : className?.includes("h-24")
       ? "text-4xl"
       : "text-6xl";
+  // Photos sit on plain white so the WHOLE product is always visible;
+  // emoji placeholders keep the per-category gradient behind them.
+  const backdrop = product.imageUrl ? "bg-white" : CATEGORY_GRADIENTS[product.category] ?? "from-amber-100 to-rose-100";
   return (
     <div
       className={cn(
         "relative flex items-center justify-center overflow-hidden bg-gradient-to-br",
-        CATEGORY_GRADIENTS[product.category] ?? "from-amber-100 to-rose-100",
+        backdrop,
         className,
       )}
     >
-      <span className={cn("drop-shadow-sm", emojiSize)}>{product.emoji}</span>
+      {product.imageUrl ? (
+        /* Real product photo (files live in /public). object-contain letterboxes
+         * the full image inside the box — never cropped or stretched, no matter
+         * the photo's aspect ratio or the size of the container. */
+        <Image
+          src={product.imageUrl}
+          alt={product.name}
+          fill
+          sizes="(max-width: 640px) 90vw, 300px"
+          className="object-contain"
+        />
+      ) : (
+        <span className={cn("drop-shadow-sm", emojiSize)}>{product.emoji}</span>
+      )}
     </div>
   );
 }
@@ -49,10 +66,6 @@ export function ProductCard({ product }: { product: Product }) {
         {soldOut ? (
           <span className="absolute left-2 top-2 rounded-full bg-espresso/85 px-2.5 py-1 text-[10px] font-bold text-white">
             {product.available ? "Sold out" : "Unavailable"}
-          </span>
-        ) : madeToOrder ? (
-          <span className="absolute left-2 top-2 rounded-full bg-secondary px-2.5 py-1 text-[10px] font-bold text-white">
-            Made to order
           </span>
         ) : stock <= 5 ? (
           <span className="absolute left-2 top-2 rounded-full bg-red-600 px-2.5 py-1 text-[10px] font-bold text-white">
