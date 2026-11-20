@@ -74,6 +74,19 @@ export function buildReports(orders: Order[], products: Product[], inventory: In
     return { order: o, dateKey: toDateKey(o.createdAt), week: isoWeekKey(date), month: o.createdAt.slice(0, 7) };
   });
 
+  // "Sold" in the inventory report comes from actual completed order
+  // items — the SAME source as Product performance. The stock ledger's
+  // SOLD movements only exist for sales made through the live API (the
+  // imported demo history has none), so using them here would show 0
+  // for every seeded product. Counting order items also includes those
+  // real sales, so nothing is double-counted.
+  const soldByProduct = new Map<string, number>();
+  for (const { order } of withMeta) {
+    for (const item of order.items) {
+      soldByProduct.set(item.productId, (soldByProduct.get(item.productId) ?? 0) + item.quantity);
+    }
+  }
+
   const dailyRows = group(withMeta, "dateKey", {
     label: (k) => new Date(`${k}T00:00:00`).toLocaleDateString("en-PH", { year: "numeric", month: "short", day: "numeric" }),
     short: (k) => new Date(`${k}T00:00:00`).toLocaleDateString("en-PH", { month: "short", day: "numeric" }),
@@ -102,15 +115,15 @@ export function buildReports(orders: Order[], products: Product[], inventory: In
     .filter((p) => !p.archived)
     .map((p) => {
       const inv = inventory.find((i) => i.productId === p.id);
+      // Wastage is still a stock-ledger figure (end-of-shift write-offs).
       const wasted = inv ? inv.movements.filter((m) => m.type === "WASTED").reduce((s, m) => s + m.quantity, 0) : 0;
-      const sold = inv ? inv.movements.filter((m) => m.type === "SOLD").reduce((s, m) => s + m.quantity, 0) : 0;
       return {
         id: p.id,
         name: p.name,
         category: p.category,
         available: inv?.quantity ?? 0,
         threshold: inv?.lowStockThreshold ?? 0,
-        sold,
+        sold: soldByProduct.get(p.id) ?? 0,
         wasted,
         lastUpdated: inv ? formatDateTime(inv.lastUpdated) : "—",
       };
