@@ -21,6 +21,13 @@ export function BarChart({ data, money = false, height = 180, className, danger 
   danger?: boolean;
 }) {
   const max = Math.max(...data.map((d) => d.value), 1);
+  // With 60 daily bars, a label under EVERY bar overlaps into an
+  // unreadable smear. Keep all bars (no data is lost) but show only
+  // ~9 evenly spaced labels, plus the latest day when it isn't cramped.
+  // The exact date is always in the hover tooltip.
+  const labelStep = Math.max(1, Math.ceil(data.length / 9));
+  const lastIndex = data.length - 1;
+  const showLastLabel = lastIndex - Math.floor(lastIndex / labelStep) * labelStep >= 4;
   return (
     <div className={cn("flex items-end gap-1", className)} style={{ height }}>
       {data.map((d, i) => (
@@ -38,11 +45,11 @@ export function BarChart({ data, money = false, height = 180, className, danger 
             )}
             style={{ height: `${Math.max((d.value / max) * 100, 2)}%` }}
           />
-          <span className={cn("truncate text-[9px] text-mocha", data.length > 16 && "hidden sm:block")}>
-            {d.label}
+          <span className="truncate text-[9px] text-mocha">
+            {i % labelStep === 0 || (i === lastIndex && showLastLabel) ? d.label : "\u00a0"}
           </span>
           <div className="pointer-events-none absolute -top-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-lg bg-espresso px-2 py-1 text-[10px] font-semibold text-white opacity-0 shadow-md transition-opacity group-hover:opacity-100">
-            {money ? formatCurrency(d.value) : d.value}
+            {d.label} — {money ? formatCurrency(d.value) : d.value}
           </div>
         </div>
       ))}
