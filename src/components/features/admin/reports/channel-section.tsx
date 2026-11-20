@@ -3,12 +3,25 @@
 import { HorizontalBars } from "@/components/common/charts";
 import { formatCurrency, formatNumber } from "@/lib/utils";
 import { ChannelRow } from "./aggregation";
+import { DayFilter } from "./day-filter";
 
 /* Channel comparison — online vs walk-in, table on the left and the
- * order-volume bars on the right. */
-export function ChannelSection({ rows }: { rows: ChannelRow[] }) {
+ * order-volume bars on the right. The day picker narrows both views. */
+export function ChannelSection({
+  rows,
+  day,
+  onDayChange,
+}: {
+  rows: ChannelRow[];
+  day: string;
+  onDayChange: (value: string) => void;
+}) {
   return (
-    <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <div className="flex flex-col gap-4">
+      <div className="overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-card">
+        <DayFilter day={day} onChange={onDayChange} />
+      </div>
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       <div className="min-w-0 overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-card">
         <table className="w-full text-sm">
           <thead>
@@ -38,6 +51,7 @@ export function ChannelSection({ rows }: { rows: ChannelRow[] }) {
         <div className="mt-4">
           <HorizontalBars data={rows.map((r) => ({ label: r.channel, value: r.orders }))} />
         </div>
+      </div>
       </div>
     </div>
   );

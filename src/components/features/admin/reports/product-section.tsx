@@ -2,11 +2,23 @@
 
 import { formatCurrency, formatNumber } from "@/lib/utils";
 import { ProductRow } from "./aggregation";
+import { DayFilter } from "./day-filter";
 
-/* Product performance — which items sell units and bring revenue. */
-export function ProductPerformanceSection({ rows }: { rows: ProductRow[] }) {
+/* Product performance — which items sell units and bring revenue.
+ * The day filter is owned by the Reports page (it also drives the CSV
+ * export); this section only renders the picker and the filtered rows. */
+export function ProductPerformanceSection({
+  rows,
+  day,
+  onDayChange,
+}: {
+  rows: ProductRow[];
+  day: string;
+  onDayChange: (value: string) => void;
+}) {
   return (
     <div className="overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-card">
+      <DayFilter day={day} onChange={onDayChange} />
       <div className="overflow-x-auto">
         <table className="w-full min-w-160 text-sm">
           <thead>

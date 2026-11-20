@@ -67,12 +67,22 @@ export interface Reports {
 }
 
 /** Every report the screen can show, computed in one pass over the data. */
-export function buildReports(orders: Order[], products: Product[], inventory: InventoryItem[]): Reports {
+export function buildReports(
+  orders: Order[],
+  products: Product[],
+  inventory: InventoryItem[],
+  day?: string,
+): Reports {
   const sales = completedSales(orders);
   const withMeta = sales.map((o) => {
     const date = new Date(o.createdAt);
     return { order: o, dateKey: toDateKey(o.createdAt), week: isoWeekKey(date), month: o.createdAt.slice(0, 7) };
   });
+
+  // Product performance and channel comparison can be narrowed to ONE day
+  // with the calendar picker. Sales-over-time and inventory reports keep
+  // using the full `withMeta` set so their periods stay comparable.
+  const scoped = day ? withMeta.filter((r) => r.dateKey === day) : withMeta;
 
   // "Sold" in the inventory report comes from actual completed order
   // items — the SAME source as Product performance. The stock ledger's
@@ -99,7 +109,7 @@ export function buildReports(orders: Order[], products: Product[], inventory: In
     .map((p) => {
       let units = 0;
       let revenue = 0;
-      for (const r of withMeta) {
+      for (const r of scoped) {
         for (const item of r.order.items) {
           if (item.productId === p.id) {
             units += item.quantity;
@@ -129,7 +139,7 @@ export function buildReports(orders: Order[], products: Product[], inventory: In
       };
     });
 
-  const channelRows: ChannelRow[] = salesByChannel(orders).map((c) => ({
+  const channelRows: ChannelRow[] = salesByChannel(scoped.map((r) => r.order)).map((c) => ({
     ...c,
     revenuePerOrder: c.orders ? c.revenue / c.orders : 0,
   }));

@@ -20,8 +20,14 @@ import { ChannelSection } from "./channel-section";
 export default function ReportsScreen() {
   const { orders, products, inventory } = useStore();
   const [mode, setMode] = useState<Mode>("DAILY");
+  // Optional single-day filter for Product performance + Channel comparison.
+  // Empty string = all dates (the original behaviour).
+  const [day, setDay] = useState("");
 
-  const reports = useMemo(() => buildReports(orders, products, inventory), [orders, products, inventory]);
+  const reports = useMemo(
+    () => buildReports(orders, products, inventory, day || undefined),
+    [orders, products, inventory, day],
+  );
 
   const salesRows =
     mode === "DAILY" ? reports.dailyRows : mode === "WEEKLY" ? reports.weeklyRows : reports.monthlyRows;
@@ -32,9 +38,11 @@ export default function ReportsScreen() {
       <ReportsTabs mode={mode} onChange={setMode} />
 
       {mode === "DAILY" || mode === "WEEKLY" || mode === "MONTHLY" ? <SalesPeriodSection rows={salesRows} /> : null}
-      {mode === "PRODUCT" ? <ProductPerformanceSection rows={reports.productRows} /> : null}
+      {mode === "PRODUCT" ? (
+        <ProductPerformanceSection rows={reports.productRows} day={day} onDayChange={setDay} />
+      ) : null}
       {mode === "INVENTORY" ? <InventoryWastageSection rows={reports.inventoryRows} /> : null}
-      {mode === "CHANNEL" ? <ChannelSection rows={reports.channelRows} /> : null}
+      {mode === "CHANNEL" ? <ChannelSection rows={reports.channelRows} day={day} onDayChange={setDay} /> : null}
     </div>
   );
 }
