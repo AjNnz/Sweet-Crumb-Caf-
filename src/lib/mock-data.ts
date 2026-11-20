@@ -592,7 +592,11 @@ function flush(
     return { productId: p.id, name: p.name, price: p.price, quantity: b.quantity };
   });
   const method: PaymentMethod = channel === "ONLINE" ? (rand() < 0.6 ? "GCASH" : "CASH ON PICKUP") : rand() < 0.75 ? "CASH" : "GCASH";
-  const paid = channel === "WALK-IN" || rand() < 0.8;
+  // Simulated wallet/card payments settle immediately, exactly like the
+  // real checkout API (paidNow = GCASH || CARD). Only cash that changes
+  // hands later can be left PENDING in the demo. The 80% cash rule keeps
+  // plenty of completed historical sales for the analytics to show.
+  const paid = channel === "WALK-IN" || method === "GCASH" || rand() < 0.8;
 
   orders.push({
     id: `ord-${String(seq).padStart(6, "0")}`,
